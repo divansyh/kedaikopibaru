@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth md:scroll-auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Duende Coffee and Space</title>
+  <link rel="stylesheet" href="./output.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="navbar"
+     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+     style="background: linear-gradient(180deg, rgba(10,10,10,.97) 0%, transparent 100%)">
+
+  <!-- top bar -->
+  <div class="flex items-center justify-between px-5 md:px-14 py-4 md:py-5">
+    <a href="#" class="font-serif text-xl md:text-2xl font-semibold tracking-widest text-cream-light no-underline">
+      Duende <span class="text-gold">Coffee</span>
+    </a>
+
+    <!-- desktop links -->
+    <ul class="hidden md:flex gap-10 list-none m-0 p-0">
+      <li><a href="#about"    class="text-text-dim text-xs tracking-widest uppercase font-medium hover:text-gold transition-colors no-underline">Tentang</a></li>
+      <li><a href="#menu"     class="text-text-dim text-xs tracking-widest uppercase font-medium hover:text-gold transition-colors no-underline">Menu</a></li>
+      <li><a href="#gallery"  class="text-text-dim text-xs tracking-widest uppercase font-medium hover:text-gold transition-colors no-underline">Gallery</a></li>
+      <li><a href="#location" class="text-text-dim text-xs tracking-widest uppercase font-medium hover:text-gold transition-colors no-underline">Lokasi</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/6282293857797" target="_blank"
+         class="hidden md:inline-flex border border-gold text-gold px-6 py-2 text-xs tracking-widest uppercase font-medium rounded-sm hover:bg-gold hover:text-black transition-all no-underline">
+        Pesan Sekarang
+      </a>
+      <!-- hamburger -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer bg-transparent border-none" aria-label="Menu">
+        <span class="w-6 h-px bg-gold block transition-all duration-300" id="h1"></span>
+        <span class="w-6 h-px bg-gold block transition-all duration-300" id="h2"></span>
+        <span class="w-4 h-px bg-gold block transition-all duration-300" id="h3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile drawer -->
+  <div id="mobile-menu" class="md:hidden bg-black/95 border-t border-gold/10">
+    <div class="flex flex-col px-5 py-4 gap-1">
+      <a href="#about"    onclick="closeMobile()" class="text-text-dim text-sm tracking-widest uppercase py-3 border-b border-gold/10 hover:text-gold transition-colors no-underline">Tentang</a>
+      <a href="#menu"     onclick="closeMobile()" class="text-text-dim text-sm tracking-widest uppercase py-3 border-b border-gold/10 hover:text-gold transition-colors no-underline">Menu</a>
+      <a href="#gallery"  onclick="closeMobile()" class="text-text-dim text-sm tracking-widest uppercase py-3 border-b border-gold/10 hover:text-gold transition-colors no-underline">Gallery</a>
+      <a href="#location" onclick="closeMobile()" class="text-text-dim text-sm tracking-widest uppercase py-3 border-b border-gold/10 hover:text-gold transition-colors no-underline">Lokasi</a>
+      <a href="https://wa.me/6282293857797" target="_blank"
+         class="mt-3 bg-gold text-black text-center py-3 text-xs tracking-widest uppercase font-semibold rounded-sm no-underline">
+        💬 Pesan via WhatsApp
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex items-end justify-start px-5 pb-16 pt-28 md:px-14 md:pb-20 overflow-hidden">
+  <div class="absolute inset-0"
+       style="background: radial-gradient(ellipse 60% 80% at 70% 40%, rgba(61,34,24,.45) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 60% at 10% 80%, rgba(43,24,16,.6) 0%, transparent 60%),
+              linear-gradient(160deg, #0f0a08 0%, #1a0f09 40%, #0a0a0a 100%)"></div>
+  <div class="absolute inset-0 opacity-[.04]"
+       style="background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');background-size:200px"></div>
+
+  <!-- steam (hidden on small screens, too distracting) -->
+  <div class="absolute bottom-0 right-[10%] pointer-events-none hidden sm:block">
+    <div class="steam-ring" style="width:100px;height:100px;position:absolute;bottom:50px;right:30px;animation-delay:0s"></div>
+    <div class="steam-ring" style="width:180px;height:180px;position:absolute;bottom:30px;right:0;animation-delay:1.5s"></div>
+    <div class="steam-ring" style="width:280px;height:280px;position:absolute;bottom:10px;right:-30px;animation-delay:3s"></div>
+  </div>
+
+  <div class="relative z-10 max-w-xl fade-in visible">
+    <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.2em] uppercase font-medium mb-5 md:mb-7">
+      <span class="w-8 md:w-10 h-px bg-gold inline-block"></span>
+      Est. Parepare, Sulawesi Selatan
+    </div>
+    <h1 class="font-serif text-[clamp(2.8rem,10vw,6rem)] font-light leading-[1.05] text-cream-light mb-5 md:mb-7">
+      Duende<br><em class="italic text-gold">Coffee</em><br>and Space
+    </h1>
+    <p class="text-text-dim text-sm max-w-sm leading-loose mb-8 md:mb-11">
+      Tempat ngopi nyaman di Parepare dengan suasana cozy dan harga bersahabat.
+      Cocok untuk nongkrong, kerja, atau sekadar menikmati kopi berkualitas.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="#menu"
+         class="bg-gold text-black px-8 py-3.5 text-[.78rem] tracking-widest uppercase font-semibold rounded-sm hover:bg-gold-light transition-all no-underline text-center">
+        ☕ Lihat Menu
+      </a>
+      <a href="#location"
+         class="border border-gold/40 text-gold px-8 py-3.5 text-[.78rem] tracking-widest uppercase font-medium rounded-sm hover:border-gold hover:bg-gold/10 transition-all no-underline text-center">
+        📍 Kunjungi Kami
+      </a>
+    </div>
+  </div>
+
+  <!-- scroll indicator desktop only -->
+  <div class="absolute right-14 bottom-20 z-10 hidden md:flex flex-col items-center gap-3 text-text-dim text-[.7rem] tracking-widest uppercase">
+    <div class="w-px h-16 bg-gradient-to-b from-gold to-transparent animate-[scrollPulse_2s_ease-in-out_infinite]"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HIGHLIGHTS
+══════════════════════════════════════ -->
+<div class="grid grid-cols-1 sm:grid-cols-3 border-t border-b border-gold/10">
+  <div class="hi-item flex flex-col gap-2 px-6 sm:px-12 py-8 sm:py-12 border-b sm:border-b-0 sm:border-r border-gold/10 hover:bg-gold/[.04] transition-colors fade-in">
+    <span class="text-2xl">⭐</span>
+    <div class="font-serif text-4xl font-semibold text-cream-light leading-none">4.6</div>
+    <div class="text-[.7rem] text-text-dim tracking-widest uppercase">Rating · 93+ Ulasan</div>
+  </div>
+  <div class="hi-item flex flex-col gap-2 px-6 sm:px-12 py-8 sm:py-12 border-b sm:border-b-0 sm:border-r border-gold/10 hover:bg-gold/[.04] transition-colors fade-in d1">
+    <span class="text-2xl">💰</span>
+    <div class="font-serif text-4xl font-semibold text-cream-light leading-none">25K<span class="text-2xl">–50K</span></div>
+    <div class="text-[.7rem] text-text-dim tracking-widest uppercase">Harga Ramah Mahasiswa</div>
+  </div>
+  <div class="hi-item flex flex-col gap-2 px-6 sm:px-12 py-8 sm:py-12 hover:bg-gold/[.04] transition-colors fade-in d2">
+    <span class="text-2xl">🪑</span>
+    <div class="font-serif text-xl font-semibold text-cream-light leading-snug">Dine In · Take Away</div>
+    <div class="text-[.7rem] text-text-dim tracking-widest uppercase">Delivery Tersedia</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about" class="bg-deep px-5 md:px-14 py-16 md:py-28">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
+
+    <!-- visual card -->
+    <div class="relative h-64 sm:h-80 md:h-[520px] bg-surface border border-gold/10 rounded-sm overflow-hidden fade-in">
+      <div class="absolute inset-0 flex items-center justify-center"
+           style="background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(61,34,24,.6) 0%, rgba(10,10,10,.9) 100%)">
+        <span class="text-[5rem] md:text-[7rem] opacity-40 animate-[cupFloat_4s_ease-in-out_infinite]"
+              style="filter: drop-shadow(0 0 40px rgba(201,169,110,.3))">☕</span>
+      </div>
+      <div class="absolute top-5 right-5 font-serif text-[4rem] md:text-[6rem] font-bold leading-none pointer-events-none select-none"
+           style="color: rgba(201,169,110,0.05)">D</div>
+      <div class="absolute bottom-0 left-0 bg-gold text-black px-5 py-3 md:px-7 md:py-4 font-serif text-base md:text-xl font-semibold">Since 2020</div>
+    </div>
+
+    <!-- text -->
+    <div class="fade-in d1">
+      <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.22em] uppercase font-medium mb-4">
+        <span class="w-7 h-px bg-gold"></span>Tentang Kami
+      </div>
+      <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15] mb-4">
+        Cerita di Balik<br><em class="italic text-gold">Duende</em>
+      </h2>
+      <p class="text-text-dim text-sm leading-loose mb-3">
+        Duende Coffee and Space adalah kedai kopi di jantung kota Parepare dengan konsep modern-industrial yang nyaman.
+        Nama "Duende" terinspirasi dari kata Spanyol yang berarti jiwa — energi emosional yang dalam.
+      </p>
+      <p class="text-text-dim text-sm leading-loose">
+        Kami percaya secangkir kopi yang baik bukan hanya soal rasa, tapi juga suasana, komunitas, dan momen yang tercipta.
+      </p>
+      <div class="mt-6 md:mt-9 flex flex-col gap-3">
+        <div class="flex items-center gap-3 text-sm text-text"><span class="size-1.5 rounded-full bg-gold shrink-0"></span>Tempat nyaman untuk kerja &amp; diskusi</div>
+        <div class="flex items-center gap-3 text-sm text-text"><span class="size-1.5 rounded-full bg-gold shrink-0"></span>Harga ramah di kantong mahasiswa</div>
+        <div class="flex items-center gap-3 text-sm text-text"><span class="size-1.5 rounded-full bg-gold shrink-0"></span>Bahan kopi pilihan, diseduh dengan hati</div>
+        <div class="flex items-center gap-3 text-sm text-text"><span class="size-1.5 rounded-full bg-gold shrink-0"></span>Lokasi strategis di pusat Parepare</div>
+        <div class="flex items-center gap-3 text-sm text-text"><span class="size-1.5 rounded-full bg-gold shrink-0"></span>Tersedia area komunitas &amp; event</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     MENU
+══════════════════════════════════════ -->
+<section id="menu" class="bg-black px-5 md:px-14 py-16 md:py-28">
+  <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.22em] uppercase font-medium mb-4 fade-in">
+    <span class="w-7 h-px bg-gold"></span>Menu Kami
+  </div>
+  <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15] mb-7 fade-in">
+    Pilihan <em class="italic text-gold">Terbaik</em><br>Untuk Harimu
+  </h2>
+
+  <!-- tabs — scrollable on mobile -->
+  <div class="flex gap-0 border-b border-gold/10 mb-6 md:mb-12 fade-in overflow-x-auto">
+    <button class="tab-btn active shrink-0 px-5 md:px-7 py-3 text-[.72rem] md:text-[.8rem] tracking-widest uppercase font-medium text-text-dim hover:text-cream bg-transparent border-x-0 border-t-0 cursor-pointer whitespace-nowrap"
+            data-tab="coffee">☕ Coffee</button>
+    <button class="tab-btn shrink-0 px-5 md:px-7 py-3 text-[.72rem] md:text-[.8rem] tracking-widest uppercase font-medium text-text-dim hover:text-cream bg-transparent border-x-0 border-t-0 cursor-pointer whitespace-nowrap"
+            data-tab="noncoffee">🍫 Non Coffee</button>
+    <button class="tab-btn shrink-0 px-5 md:px-7 py-3 text-[.72rem] md:text-[.8rem] tracking-widest uppercase font-medium text-text-dim hover:text-cream bg-transparent border-x-0 border-t-0 cursor-pointer whitespace-nowrap"
+            data-tab="snack">🍰 Snack</button>
+  </div>
+
+  <!-- coffee -->
+  <div id="tab-coffee" class="menu-panel active" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">☕</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Americano</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Espresso murni dipadukan air panas, rasa bold dan bersih.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 25.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Americano')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🥛</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Latte</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Espresso lembut bertemu susu steamed creamy, balance sempurna.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 30.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Latte')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">☁️</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Cappuccino</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Espresso, steamed milk, dan foam tebal yang klasik dan timeless.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 30.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Cappuccino')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🧊</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Es Kopi Susu Duende</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Signature kita — kopi susu dingin dengan sentuhan karamel khas Duende.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 32.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Es Kopi Susu Duende')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🌙</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Cold Brew</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Diseduh dingin 12 jam, rasa pekat dengan after-taste yang halus.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 35.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Cold Brew')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍯</span>
+      <div class="font-serif text-xl md:text-[1.35rem] font-semibold text-cream-light mb-1.5">Caramel Macchiato</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Layer espresso, vanilla, susu, dan drizzle caramel yang menggoda.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg md:text-xl text-gold font-semibold">Rp 38.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Caramel Macchiato')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- non coffee -->
+  <div id="tab-noncoffee" class="menu-panel" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍫</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Dark Chocolate</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Coklat premium pekat dengan sentuhan sea salt, bold dan satisfying.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 28.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Dark Chocolate')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍵</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Matcha Latte</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Matcha premium Jepang dengan susu fresh, earthy dan creamy.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 32.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Matcha Latte')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🌹</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Red Velvet</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Minuman Red Velvet dengan krim lembut, warna cantik dan rasa manis pas.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 30.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Red Velvet')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- snack -->
+  <div id="tab-snack" class="menu-panel" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍩</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Donat Glaze</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Donat lembut dengan glazing gula, cocok menemani kopi pagi.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 15.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Donat')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍞</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Roti Bakar</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Roti crispy topping coklat keju atau selai strawberry.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 18.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Roti Bakar')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+    <div class="menu-card bg-surface hover:bg-card p-6 md:p-9">
+      <span class="text-4xl mb-4 block">🍟</span>
+      <div class="font-serif text-xl font-semibold text-cream-light mb-1.5">Kentang Goreng</div>
+      <div class="text-xs text-text-dim leading-relaxed mb-5">Kentang crispy bumbu garlic atau bbq, teman nongkrong sempurna.</div>
+      <div class="flex items-center justify-between">
+        <span class="font-serif text-lg text-gold font-semibold">Rp 20.000</span>
+        <button onclick="window.open('https://wa.me/6282293857797?text=Halo, saya mau pesan Kentang Goreng')"
+                class="text-[.7rem] tracking-widest uppercase text-text-dim border border-gold/20 px-3 py-1.5 rounded-sm hover:border-gold hover:text-gold transition-all cursor-pointer bg-transparent">Pesan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GALLERY
+══════════════════════════════════════ -->
+<section id="gallery" class="bg-deep px-5 md:px-14 py-16 md:py-28">
+  <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.22em] uppercase font-medium mb-4 fade-in">
+    <span class="w-7 h-px bg-gold"></span>Gallery
+  </div>
+  <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15] mb-8 md:mb-12 fade-in">
+    Suasana<br><em class="italic text-gold">Duende</em>
+  </h2>
+
+  <!-- mobile: 2-col stack | desktop: asymmetric grid -->
+  <div class="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-1 md:gap-[3px] fade-in"
+       style="grid-template-rows: auto;">
+
+    <!-- big cell spans 2 rows on desktop only -->
+    <div class="gallery-item relative overflow-hidden cursor-pointer col-span-2 md:col-span-1 h-48 sm:h-56 md:row-span-2 md:h-full"
+         style="min-height: 300px; background: radial-gradient(ellipse at center, #2b1a10 0%, #0d0806 100%)">
+      <div class="gi-inner absolute inset-0 flex items-center justify-center text-5xl md:text-[3.5rem] opacity-20">☕</div>
+      <div class="gi-overlay absolute inset-0 opacity-0 flex items-end p-4 md:p-6"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.8) 100%)">
+        <span class="text-[.65rem] tracking-widest uppercase text-cream-light">Interior Utama</span>
+      </div>
+    </div>
+
+    <div class="gallery-item relative overflow-hidden cursor-pointer h-36 sm:h-44 md:h-auto"
+         style="background: radial-gradient(ellipse at center, #1e1510 0%, #0a0804 100%)">
+      <div class="gi-inner absolute inset-0 flex items-center justify-center text-4xl opacity-20">🌙</div>
+      <div class="gi-overlay absolute inset-0 opacity-0 flex items-end p-4"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.8) 100%)">
+        <span class="text-[.65rem] tracking-widest uppercase text-cream-light">Night Vibes</span>
+      </div>
+    </div>
+    <div class="gallery-item relative overflow-hidden cursor-pointer h-36 sm:h-44 md:h-auto"
+         style="background: radial-gradient(ellipse at center, #261510 0%, #0f0705 100%)">
+      <div class="gi-inner absolute inset-0 flex items-center justify-center text-4xl opacity-20">🥛</div>
+      <div class="gi-overlay absolute inset-0 opacity-0 flex items-end p-4"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.8) 100%)">
+        <span class="text-[.65rem] tracking-widest uppercase text-cream-light">Signature Drinks</span>
+      </div>
+    </div>
+    <div class="gallery-item relative overflow-hidden cursor-pointer h-36 sm:h-44 md:h-auto"
+         style="background: radial-gradient(ellipse at center, #1a1208 0%, #0d0a04 100%)">
+      <div class="gi-inner absolute inset-0 flex items-center justify-center text-4xl opacity-20">🪑</div>
+      <div class="gi-overlay absolute inset-0 opacity-0 flex items-end p-4"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.8) 100%)">
+        <span class="text-[.65rem] tracking-widest uppercase text-cream-light">Seating Area</span>
+      </div>
+    </div>
+    <div class="gallery-item relative overflow-hidden cursor-pointer h-36 sm:h-44 md:h-auto"
+         style="background: radial-gradient(ellipse at center, #20140c 0%, #0c0705 100%)">
+      <div class="gi-inner absolute inset-0 flex items-center justify-center text-4xl opacity-20">🎶</div>
+      <div class="gi-overlay absolute inset-0 opacity-0 flex items-end p-4"
+           style="background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,.8) 100%)">
+        <span class="text-[.65rem] tracking-widest uppercase text-cream-light">Community Events</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
+<section id="testimonials" class="bg-black px-5 md:px-14 py-16 md:py-28">
+  <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.22em] uppercase font-medium mb-4 fade-in">
+    <span class="w-7 h-px bg-gold"></span>Ulasan Pelanggan
+  </div>
+  <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15] mb-8 md:mb-12 fade-in">
+    Kata Mereka Tentang <em class="italic text-gold">Duende</em>
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0.5">
+    <div class="bg-surface hover:bg-card transition-colors p-6 md:p-9 border-t-2 border-gold/20 fade-in">
+      <div class="text-gold tracking-widest mb-3 text-sm">★★★★★</div>
+      <p class="text-sm italic text-text leading-loose mb-5">"Tempat favoritku buat kerja remote. WiFi kencang, suasana cozy, kopi enak. Udah jadi langganan tetap setiap hari!"</p>
+      <div class="flex items-center gap-3">
+        <div class="size-9 rounded-full bg-espresso border border-gold/20 flex items-center justify-center">👩</div>
+        <div>
+          <div class="text-sm font-medium text-cream">Rania A.</div>
+          <div class="text-xs text-text-dim">Freelancer Designer</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-surface hover:bg-card transition-colors p-6 md:p-9 border-t-2 border-gold/20 fade-in d1">
+      <div class="text-gold tracking-widest mb-3 text-sm">★★★★★</div>
+      <p class="text-sm italic text-text leading-loose mb-5">"Es Kopi Susu Duende-nya juara! Harganya sangat worth it buat mahasiswa kayak gue. Tempatnya juga Instagramable banget."</p>
+      <div class="flex items-center gap-3">
+        <div class="size-9 rounded-full bg-espresso border border-gold/20 flex items-center justify-center">👨</div>
+        <div>
+          <div class="text-sm font-medium text-cream">Farhan R.</div>
+          <div class="text-xs text-text-dim">Mahasiswa UMPAR</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-surface hover:bg-card transition-colors p-6 md:p-9 border-t-2 border-gold/20 fade-in d2">
+      <div class="text-gold tracking-widest mb-3 text-sm">★★★★☆</div>
+      <p class="text-sm italic text-text leading-loose mb-5">"Sering bawa klien ke sini buat meeting santai. Suasananya profesional tapi tetap relaxed. Rekomen banget!"</p>
+      <div class="flex items-center gap-3">
+        <div class="size-9 rounded-full bg-espresso border border-gold/20 flex items-center justify-center">👩‍💼</div>
+        <div>
+          <div class="text-sm font-medium text-cream">Dita S.</div>
+          <div class="text-xs text-text-dim">Business Owner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     LOCATION
+══════════════════════════════════════ -->
+<section id="location" class="bg-deep px-5 md:px-14 py-16 md:py-28">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+
+    <!-- map -->
+    <div class="relative h-64 sm:h-80 md:h-96 bg-surface border border-gold/10 rounded-sm overflow-hidden flex flex-col items-center justify-center gap-3 fade-in">
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse at 40% 50%, rgba(43,24,16,.5) 0%, transparent 70%)"></div>
+      <span class="text-5xl z-10 animate-[pinBounce_2s_ease-in-out_infinite]">📍</span>
+      <span class="z-10 text-[.7rem] tracking-widest uppercase text-text-dim">Parepare, Sulawesi Selatan</span>
+      <a href="https://maps.google.com/?q=Jln.+Mattirotasi+No.+57+Parepare" target="_blank"
+         class="z-10 mt-1 bg-gold text-black px-6 py-2.5 rounded-sm text-xs tracking-widest uppercase font-semibold hover:bg-gold-light transition-colors no-underline">
+        Buka di Maps
+      </a>
+    </div>
+
+    <!-- info -->
+    <div class="fade-in d1 flex flex-col gap-6 md:gap-8">
+      <div>
+        <div class="flex items-center gap-3 text-gold text-[.65rem] tracking-[.22em] uppercase font-medium mb-4">
+          <span class="w-7 h-px bg-gold"></span>Lokasi &amp; Kontak
+        </div>
+        <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15]">
+          Temukan<br><em class="italic text-gold">Kami</em>
+        </h2>
+      </div>
+      <div>
+        <div class="text-[.65rem] tracking-widest uppercase text-gold font-medium mb-1.5">Alamat</div>
+        <div class="text-sm text-text leading-loose">Jln. Mattirotasi No. 57, Kel. Kamp. Baru,<br>Kec. Bacukiki Bar., Kota Parepare,<br>Sulawesi Selatan 91121</div>
+      </div>
+      <div>
+        <div class="text-[.65rem] tracking-widest uppercase text-gold font-medium mb-1.5">Jam Operasional</div>
+        <div class="text-sm text-text leading-loose">Senin – Minggu · 08.00 – 23.00 WITA</div>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <a href="https://wa.me/6282293857797" target="_blank"
+           class="flex items-center gap-4 px-4 py-3 border border-gold/15 rounded-sm text-text text-sm hover:border-gold hover:bg-gold/5 hover:text-cream transition-all no-underline">
+          <span>📞</span> 0822-9385-7797 (WhatsApp)
+        </a>
+        <a href="https://instagram.com/duendecoffee" target="_blank"
+           class="flex items-center gap-4 px-4 py-3 border border-gold/15 rounded-sm text-text text-sm hover:border-gold hover:bg-gold/5 hover:text-cream transition-all no-underline">
+          <span>📷</span> @duendecoffee
+        </a>
+        <a href="https://maps.google.com/?q=Jln.+Mattirotasi+No.+57+Parepare" target="_blank"
+           class="flex items-center gap-4 px-4 py-3 border border-gold/15 rounded-sm text-text text-sm hover:border-gold hover:bg-gold/5 hover:text-cream transition-all no-underline">
+          <span>📍</span> Lihat di Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA
+══════════════════════════════════════ -->
+<section class="relative px-5 md:px-14 py-20 md:py-24 text-center overflow-hidden"
+         style="background: linear-gradient(135deg, #2b1810 0%, #3d2218 50%, #2b1810 100%)">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none font-serif font-bold overflow-hidden"
+       style="font-size: clamp(5rem, 22vw, 14rem); color: rgba(201,169,110,0.04); white-space: nowrap;">DUENDE</div>
+  <div class="relative z-10">
+    <div class="text-gold/70 text-[.65rem] tracking-widest uppercase mb-4">Yuk Mampir</div>
+    <h2 class="font-serif text-[clamp(2rem,6vw,3.4rem)] font-light text-cream-light leading-[1.15] mb-4">
+      Ngopi. Ngobrol.<br><em class="italic text-gold">Berkarya.</em>
+    </h2>
+    <p class="text-cream/60 text-sm max-w-sm mx-auto mb-8 leading-loose">
+      Reservasi meja atau pesan sekarang via WhatsApp. Kami siap menyambut kamu!
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://wa.me/6282293857797?text=Halo, saya mau reservasi meja di Duende Coffee" target="_blank"
+         class="bg-gold text-black px-8 py-3.5 text-[.78rem] tracking-widest uppercase font-semibold rounded-sm hover:bg-gold-light transition-all no-underline">
+        📅 Reservasi Meja
+      </a>
+      <a href="#menu"
+         class="border border-gold/40 text-gold px-8 py-3.5 text-[.78rem] tracking-widest uppercase font-medium rounded-sm hover:border-gold hover:bg-gold/10 transition-all no-underline">
+        ☕ Lihat Menu
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="bg-black border-t border-gold/10 px-5 md:px-14 pt-12 md:pt-16 pb-8 md:pb-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-16 mb-10">
+    <div class="sm:col-span-2 md:col-span-1">
+      <div class="font-serif text-2xl font-semibold text-cream-light mb-3">
+        Duende <span class="text-gold">Coffee</span> and Space
+      </div>
+      <p class="text-xs text-text-dim leading-loose max-w-xs">
+        Kedai kopi dengan jiwa — tempat di mana setiap tegukan membawa cerita, dan setiap sudut mengundang percakapan.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-[.65rem] tracking-widest uppercase text-gold font-medium mb-4">Navigasi</h4>
+      <ul class="flex flex-col gap-2 list-none p-0">
+        <li><a href="#about"        class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Tentang Kami</a></li>
+        <li><a href="#menu"         class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Menu</a></li>
+        <li><a href="#gallery"      class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Gallery</a></li>
+        <li><a href="#testimonials" class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Ulasan</a></li>
+        <li><a href="#location"     class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Lokasi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-[.65rem] tracking-widest uppercase text-gold font-medium mb-4">Kontak</h4>
+      <ul class="flex flex-col gap-2 list-none p-0">
+        <li><a href="https://wa.me/6282293857797"        target="_blank" class="text-text-dim text-sm hover:text-cream transition-colors no-underline">WhatsApp</a></li>
+        <li><a href="https://instagram.com/duendecoffee" target="_blank" class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Instagram</a></li>
+        <li><a href="https://maps.google.com"            target="_blank" class="text-text-dim text-sm hover:text-cream transition-colors no-underline">Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-gold/[.07] pt-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
+    <div class="text-xs text-text-dim">© 2025 Duende Coffee and Space. All rights reserved.</div>
+    <div class="font-serif italic text-gold text-sm opacity-60">"Where Coffee Meets Comfort."</div>
+  </div>
+</footer>
+
+<!-- WA Float -->
+<a href="https://wa.me/6282293857797?text=Halo, saya mau tanya tentang Duende Coffee" target="_blank"
+   class="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 size-12 md:size-14 rounded-full flex items-center justify-center text-xl md:text-2xl text-white hover:scale-110 transition-transform shadow-lg no-underline"
+   style="background: #25D366; box-shadow: 0 4px 24px rgba(37,211,102,.35)">💬</a>
+
+<script>
+  // ── Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,.97)'
+      : 'linear-gradient(180deg, rgba(10,10,10,.97) 0%, transparent 100%)';
+  });
+
+  // ── Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const h1 = document.getElementById('h1');
+  const h2 = document.getElementById('h2');
+  const h3 = document.getElementById('h3');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    // animate to X
+    if (menuOpen) {
+      h1.style.transform = 'translateY(6px) rotate(45deg)';
+      h2.style.opacity = '0';
+      h3.style.transform = 'translateY(-6px) rotate(-45deg)';
+      h3.style.width = '24px';
+    } else {
+      h1.style.transform = '';
+      h2.style.opacity = '1';
+      h3.style.transform = '';
+      h3.style.width = '16px';
+    }
+  });
+
+  function closeMobile() {
+    menuOpen = false;
+    mobileMenu.classList.remove('open');
+    h1.style.transform = ''; h2.style.opacity = '1';
+    h3.style.transform = ''; h3.style.width = '16px';
+  }
+
+  // ── Scroll fade-in
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Menu tabs
+  document.querySelectorAll('.tab-btn').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
