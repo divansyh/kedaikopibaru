@@ -1,2 +1,1 @@
-# kedaikopibaru
-# kedaikopibaru
+
